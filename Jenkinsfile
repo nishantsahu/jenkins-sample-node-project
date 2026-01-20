@@ -9,10 +9,12 @@ pipeline {
         }
 
         stage("Docker Build") {
-            sh '''
-                docker version
-                docker build -t jenkins-docker-test:latest .
-            '''
+            steps {
+                sh '''
+                    docker version
+                    docker build -t jenkins-docker-test:latest .
+                '''
+            }
         }
     }
 }
