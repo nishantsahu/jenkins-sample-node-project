@@ -46,7 +46,10 @@ pipeline {
 
         stage('Docker Push') {
             steps {
-                sh 'docker push ${FULL_IMAGE} || docker push ${FULL_IMAGE}'
+                sh '''
+                    docker push ${FULL_IMAGE}
+                    docker push ${LATEST_IMAGE}
+                '''
             }
         }
 
