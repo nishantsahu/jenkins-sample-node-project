@@ -2,7 +2,6 @@
   "name": "jenkins-sample-node-project",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"test passed\"",
-    "build": "echo \"build done\""
+    "start": "node app.js"
   }
 }
