@@ -6,6 +6,7 @@ pipeline {
         IMAGE_NAME = "jenkins-sample-node-project"
         IMAGE_TAG = "${env.BUILD_NUMBER}"
         FULL_IMAGE = "${DOCKERHUB_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
+        LATEST_IMAGE = "${DOCKERHUB_USER}/${IMAGE_NAME}:latest"
     }
 
     stages {
@@ -20,6 +21,7 @@ pipeline {
                 sh '''
                     docker version
                     docker build -t ${FULL_IMAGE} .
+                    docker tag ${FULL_IMAGE} ${LATEST_IMAGE}
                 '''
             }
         }
@@ -61,7 +63,9 @@ pipeline {
 
     post {
         success {
-            echo "Docker image pushed successfully: ${FULL_IMAGE}"
+            echo "Docker image pushed successfully:"
+            echo " - ${FULL_IMAGE}"
+            echo " - ${LATEST_IMAGE}"
         }
         failure {
             echo "Pipeline failed"
