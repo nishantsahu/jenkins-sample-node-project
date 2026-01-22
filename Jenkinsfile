@@ -48,16 +48,16 @@ pipeline {
             }
         }
     }
-}
 
-post {
-    success {
-        echo "Docker image pushed successfully: ${FULL_IMAGE}"
-    }
-    failure {
-        echo "Pipeline failed"
-    }
-    always {
-        sh "docker logout || true"
+    post {
+        success {
+            echo "Docker image pushed successfully: ${FULL_IMAGE}"
+        }
+        failure {
+            echo "Pipeline failed"
+        }
+        always {
+            sh "docker logout || true"
+        }
     }
 }
