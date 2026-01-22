@@ -47,6 +47,16 @@ pipeline {
                 sh 'docker push ${FULL_IMAGE} || docker push ${FULL_IMAGE}'
             }
         }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh '''
+                    kubectl apply -f deployment.yaml
+                    kubectl apply -f service.yaml
+                    kubectl rollout restart deployment node-app
+                '''
+            }
+        }
     }
 
     post {
