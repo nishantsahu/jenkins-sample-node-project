@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "jenkins-sample-node-project"
-        IMAGE_TAG=${env.BUILD_NUMBER}
+        IMAGE_TAG = "${env.BUILD_NUMBER}"
     }
 
     stages {
