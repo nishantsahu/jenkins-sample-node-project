@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "jenkins-sample-node-project",
+        IMAGE_NAME = "jenkins-sample-node-project"
         IMAGE_TAG=${env.BUILD_NUMBER}
     }
 
